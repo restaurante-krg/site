@@ -7,8 +7,25 @@
 
 
 .bg-cardapio{
-    margin-top: 2%;
-    height: 100%;
     background-color: red; /* For browsers that do not support gradients */
     background-image: linear-gradient(to bottom right, rgba(215,10,52,1) , rgba(2,5,17,1));
+}
+
+.bg-fundo-cardapio{
+    background-color: rgb(20, 19, 19);
+}
+
+
+
+.bg-com-imagem {
+    background-image: url('../assets/img-bg.png');
+    background-repeat: repeat;
+    background-size: cover; /* Para preencher a div com a imagem */
+    opacity: 0.5;
+    transform: rotate(45deg);
+}
+
+.teste {
+    display: flex;
+    padding-top: 5%;
 }
