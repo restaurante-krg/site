@@ -14,4 +14,8 @@
 
 - [ ] Fazer redirecionamento para as redes sociais no footer.
 
+- [ ] Adicionar horário de funcionamento + localização 
+
+- [ ] Adicionar raio de entrega e consulta por CEP se a entrega é possivel na região.
+
 
