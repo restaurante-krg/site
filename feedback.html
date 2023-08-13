@@ -35,7 +35,7 @@
         </nav>
         <!-- fim navbar -->
         <div class="bg-fundo-cardapio">
-          <div class="container bg-cardapio pt-3">
+          <div class="container bg-cardapio pt-3 pb-2">
             <div class="card text-center">
               <div class="card-header">
                 <h2>Feedback</h2>
@@ -45,8 +45,46 @@
 
 
             <!--  form de feedback -->
-            
+          <form>
+            <label class="text-white">Qual o tipo de mensagem:</label>
+            <select class="form-control">
+              <option>Selecione:</option>
+              <option>Sugestão</option>
+              <option>Reclamação</option>
+              <option>Elogio</option>
+            </select>
+            <div class="form-group">
+              <label class="text-white">Justifique:</label>
+              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            </div>
+            <button type="button" class="btn btn-secondary btn-lg btn-block">Enviar</button>
+          </form>
           </div>
+          
+          <!-- footer  -->
+          <footer class="fixed-bottom">
+            <div class="card-footer bg-cardapio">
+              <div class="row">
+                <div class="col-sm">
+                    <h1 class="ml-5 text-center">Inicio</h4>
+                    <p class="ml-5 text-white text-center">Pesquisa de Satisfação</p>
+                    <p class="ml-5 text-white text-center">Cardápio</p>
+                    <!-- <p class="ml-5">em breve</p> -->
+                </div>
+                <div class="col-sm">
+                    <h1 class="ml-5 text-center">Sobre</h4>
+                    <p class="ml-5 text-white text-center">Inforamções da Empresa</p>
+                    <p class="ml-5 text-white text-center">Localização</p>
+                </div>
+                <div class="col-sm">
+                <h1 class="ml-5 text-center">Contato</h4>
+                    <p class="ml-5 text-white text-center">Whatsapp</p>
+                    <p class="ml-5 text-white text-center">Facebook</p>
+                    <!-- <p class="ml-5">Instagram (em breve)</p> -->
+                </div>
+              </div>
+            </div>
+          </footer>
         </div>   
     <!-- JavaScript (Opcional) -->
     <!-- jQuery primeiro, depois Popper.js, depois Bootstrap JS -->

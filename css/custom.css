@@ -13,7 +13,7 @@
 
 .bg-fundo-cardapio{
     /* background-color: rgb(20, 19, 19); */
-    background-image: linear-gradient(to bottom right, rgba(2,5,17,1) , rgba(2,5,17,1));
+    background-image: linear-gradient(to bottom right, rgb(0, 0, 0), rgb(53, 53, 54));
 }
 
 
