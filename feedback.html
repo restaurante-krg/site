@@ -1,96 +1,181 @@
+<!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <!-- Meta tags Obrigatórias -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/custom.css">
+    <title>KRG - Pesquisa de Satisfação</title>
 
-    <title>KRG - Feedback</title>
-  </head>
-  <body>
-    <div>
-        <!-- navbar -->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-navbar">
-          <a class="navbar-brand" href="#">
-              <img src="assets/img-profile.png" width="60" height="60" class="d-inline-block align-top" alt="">
-            </a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Alterna navegação">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link" href="index.html">Inicio</a>
-              </li>
-              <li class="nav-item active">
-                <a class="nav-link" href="feedback.html">Pesquisa de Satisfação</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="cardapio.html">Cardapio<span class="sr-only">(Página atual)</span></a>
-              </li>
-            </ul>
-          </div>
-        </nav>
-        <!-- fim navbar -->
-        <div class="bg-fundo-cardapio">
-          <div class="container bg-cardapio pt-3 pb-2">
-            <div class="card text-center">
-              <div class="card-header">
-                <h2>Pesquisa</h2>
-              </div>
-            </div>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/cardapio-poster.css" crossorigin="anonymous">
 
+    <style>
+        body{
+          background:linear-gradient(to bottom, #000, #111);
+          color:#fff;
+          font-family:Arial, Helvetica, sans-serif;
+        }
 
+        .container{
+          max-width:500px;
+          margin:auto;
+          padding:30px 15px;
+        }
 
-            <!--  form de feedback -->
-          <form>
-            <label class="text-white">Qual o tipo de mensagem:</label>
-            <select class="form-control">
-              <option>Selecione:</option>
-              <option>Sugestão</option>
-              <option>Reclamação</option>
-              <option>Elogio</option>
-            </select>
-            <div class="form-group">
-              <label class="text-white">Justifique:</label>
-              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-            </div>
-            <button type="button" class="btn btn-secondary btn-lg btn-block">Enviar</button>
-          </form>
+        h1{
+          text-align:center;
+          margin-bottom:10px;
+        }
 
-          </div>
-          
-          <!-- footer  -->
-          <footer class="bottom">
-            <div class="card-footer bg-cardapio ">
-              <div class="row"> 
-                <div class="col-sm mx-auto">
-                    <h1 class="ml-5 text-center">Inicio</h4>
-                    <p class="ml-5 text-white text-center">Pesquisa de Satisfação</p>
-                    <p class="ml-5 text-white text-center">Cardápio</p>
-                    <!-- <p class="ml-5">em breve</p> -->
-                </div>
-                <div class="col-sm mx-auto">
-                    <h1 class="ml-5 text-center">Sobre</h4>
-                    <p class="ml-5 text-white text-center">Informações da Empresa</p>
-                    <p class="ml-5 text-white text-center">Localização</p>
-                </div>
-                <div class="col-sm mx-auto">
-                <h1 class="ml-5 text-center">Contato</h4>
-                    <p class="ml-5 text-white text-center">Whatsapp</p>
-                    <p class="ml-5 text-white text-center">Facebook</p>
-                    <!-- <p class="ml-5">Instagram (em breve)</p> -->
-                </div>
-              </div>
-            </div>
-          </footer>
-        </div>   
-    <!-- JavaScript (Opcional) -->
-    <!-- jQuery primeiro, depois Popper.js, depois Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-  </body>
+        .subtitle{
+          text-align:center;
+          color:#bbb;
+          margin-bottom:25px;
+        }
+
+        .card{
+          background:#1a1a1a;
+          border:none;
+          border-radius:10px;
+          padding:20px;
+        }
+
+        /* Estrelas */
+        .stars{
+          display:flex;
+          justify-content:center;
+          gap:10px;
+          font-size:2rem;
+          cursor:pointer;
+        }
+
+        .star{
+          color:#555;
+        }
+
+        .star.active{
+          color:#ffc107;
+        }
+
+        label{
+          margin-top:15px;
+          font-weight:bold;
+        }
+
+        textarea{
+          resize:none;
+        }
+
+        button{
+          margin-top:20px;
+          width:100%;
+        }
+
+        .success{
+          text-align:center;
+          color:#4caf50;
+          margin-top:20px;
+          display:none;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <div id="navbar-container"></div>
+    <h1>⭐ Pesquisa de Satisfação</h1>
+    <div class="subtitle">Sua opinião é muito importante pra nós!</div>
+
+    <div class="card">
+
+        <!-- AVALIAÇÃO -->
+        <label>Como você avalia sua experiência?</label>
+        <div class="stars" id="stars">
+            <span class="star" data-value="1">★</span>
+            <span class="star" data-value="2">★</span>
+            <span class="star" data-value="3">★</span>
+            <span class="star" data-value="4">★</span>
+            <span class="star" data-value="5">★</span>
+        </div>
+
+        <!-- PERGUNTAS -->
+        <label for="food">Qualidade da comida</label>
+        <select id="food" class="form-control">
+            <option>Excelente</option>
+            <option>Boa</option>
+            <option>Regular</option>
+            <option>Ruim</option>
+        </select>
+
+        <label for="service">Atendimento</label>
+        <select id="service" class="form-control">
+            <option>Excelente</option>
+            <option>Bom</option>
+            <option>Regular</option>
+            <option>Ruim</option>
+        </select>
+
+        <label for="comment">Comentário (opcional)</label>
+        <textarea id="comment" rows="3" class="form-control"
+                  placeholder="Conte pra gente como podemos melhorar 😊"></textarea>
+
+        <button class="btn btn-danger" onclick="submitFeedback()">
+            Enviar Avaliação
+        </button>
+
+        <div class="success" id="successMsg">
+            Obrigado pelo seu feedback! ❤️
+        </div>
+
+    </div>
+
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+<script>
+
+fetch('/components/navbar.html')
+  .then(response => response.text())
+  .then(html => {
+    document.getElementById('navbar-container').innerHTML = html;
+  });
+
+let rating = 0;
+
+// estrelas
+document.querySelectorAll('.star').forEach(star => {
+  star.addEventListener('click', () => {
+    rating = star.dataset.value;
+    updateStars(rating);
+  });
+});
+
+function updateStars(value){
+  document.querySelectorAll('.star').forEach(star => {
+    star.classList.toggle('active', star.dataset.value <= value);
+  });
+}
+
+// envio
+function submitFeedback(){
+  const feedback = {
+    rating,
+    food: document.getElementById('food').value,
+    service: document.getElementById('service').value,
+    comment: document.getElementById('comment').value,
+    date: new Date().toISOString()
+  };
+
+  // salva localmente (pode trocar por API depois)
+  const list = JSON.parse(localStorage.getItem('feedbacks')) || [];
+  list.push(feedback);
+  localStorage.setItem('feedbacks', JSON.stringify(list));
+
+  document.getElementById('successMsg').style.display = 'block';
+}
+</script>
+
+</body>
 </html>

@@ -1,204 +1,251 @@
-<html lang="pt-br">
+<!DOCTYPE html>
+<html lang="pt-BR">
 <head>
-  <!-- Meta tags Obrigatórias -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="css/custom.css">
-  <title>KRG - Cardápio</title>
+    <meta charset="UTF-8">
+    <title>Cardápio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/cardapio-poster.css" crossorigin="anonymous">
+
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-navbar">
-    <a class="navbar-brand" href="#">
-      <img src="assets/img-profile.png" width="60" height="60" class="d-inline-block align-top" alt="">
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
-      aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Alterna navegação">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" href="index.html">Inicio</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="feedback.html">Pesquisa de Satisfação</a>
-        </li>
-        <li class="nav-item active">
-          <a class="nav-link" href="cardapio.html">Cardapio<span class="sr-only">(Página atual)</span></a>
-        </li>
-      </ul>
+
+<div class="menu-container">
+
+    <div id="navbar-container"></div>
+
+    <h2 class="menu-title">🍽️ Cardápio</h2>
+
+    <ul class="nav nav-tabs">
+        <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#pratos">Pratos do Dia</a></li>
+        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#porcoes">Porções</a></li>
+        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#lanches">Lanches</a></li>
+        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#carrinho">Carrinho</a></li>
+    </ul>
+
+    <div class="tab-content">
+
+        <!-- PRATOS -->
+        <div class="tab-pane fade show active" id="pratos">
+
+            <div class="menu-item">
+                <div class="menu-header">
+                    <strong>Feijoada</strong>
+                    <span>R$ 25,00</span>
+                </div>
+
+                <div class="menu-body">
+                    <img src="assets/feijoada.jpg">
+                    <div>
+                        <div class="menu-text">
+                            Feijoada completa com arroz, couve, farofa e laranja.
+                        </div>
+                        <button class="btn-add" onclick="addToCart('Feijoada',25)">Adicionar</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-item">
+                <div class="menu-header">
+                    <strong>Frango Assado</strong>
+                    <span>R$ 15,00</span>
+                </div>
+
+                <div class="menu-body">
+                    <img src="assets/frango.jpg">
+                    <div>
+                        <div class="menu-text">
+                            Frango assado com macarrão e salada.
+                        </div>
+                        <button class="btn-add" onclick="addToCart('Frango Assado',15)">Adicionar</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- PORÇÕES -->
+        <div class="tab-pane fade" id="porcoes">
+
+            <div class="menu-item">
+                <div class="menu-header">
+                    <strong>Batata Frita</strong>
+                    <span>R$ 20,00</span>
+                </div>
+
+                <div class="menu-body">
+                    <img src="assets/batata.jpg">
+                    <div>
+                        <div class="menu-text">Batata frita crocante.</div>
+                        <button class="btn-add" onclick="addToCart('Batata Frita',20)">Adicionar</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- LANCHES -->
+        <div class="tab-pane fade" id="lanches">
+
+            <div class="menu-item">
+                <div class="menu-header">
+                    <strong>X-Burger</strong>
+                    <span>R$ 18,00</span>
+                </div>
+
+                <div class="menu-body">
+                    <img src="assets/xburger.jpg">
+                    <div>
+                        <div class="menu-text">Hambúrguer com queijo.</div>
+                        <button class="btn-add" onclick="addToCart('X-Burger',18)">Adicionar</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <template id="cartItemTemplate">
+            <div class="cart-item">
+                <span class="cart-name"></span>
+
+                <div class="cart-actions">
+                    <button class="btn-qty btn-minus">−</button>
+                    <span class="cart-qty"></span>
+                    <button class="btn-qty btn-plus">+</button>
+                    <button class="btn-remove">Remover</button>
+                </div>
+            </div>
+        </template>
+
+        <!-- CARRINHO -->
+        <div class="tab-pane fade" id="carrinho">
+
+            <div id="cartList"></div>
+
+            <div id="cartTotal" style="text-align:right; font-weight:bold; margin-top:15px; display:none;">
+                <!-- Total: R$ <span> ${item.name} (${item.quantity}x) - R$ ${(item.price * item.quantity).toFixed(2)}</span> -->
+                Total: R$ <span id="totalValue">0.00</span>
+            </div>
+
+            <div id="cartEmpty" class="cart-empty">
+                Seu carrinho está vazio 🛒
+            </div>
+
+        </div>
+
     </div>
-  </nav>
 
-  <div class="bg-fundo-cardapio">
-    <div class="container bg-cardapio pt-3">
-      <div class="card text-center">
-        <div class="card-header">
-          <h2>Pratos</h2>
-        </div>
-      </div>
+</div>
+</div>
 
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 
-      <!-- Pratos do dia -->
-      <div class="card text-center">
-        <div class="card-header">
-          <h2>Pratos Do dia</h2>
-        </div>
-      </div>
+<script>
+fetch('/components/navbar.html')
+      .then(response => response.text())
+      .then(html => {
+        document.getElementById('navbar-container').innerHTML = html;
+});
 
+let cart = JSON.parse(localStorage.getItem('cart')) || [];
+renderCart();
 
-      <div class="container-fluid">
-        <div class="container">
-          <div class="row mx-auto">
-            <div class="col-sm">
-              <div class="item-cardapio mt-3" style="display: flex;">
-                <div class="card mx-auto" style="width: 18rem;">
-                  <img src="assets/feijoada.jpg" class="card-img-top" alt="feijoada">
-                  <div class="card-body">
-                    <h5 class="card-title">Feijoada</h5>
-                    <p class="card-text">Deliciosa feijoada acompanhada de torresmo e couve.</p>
-                  </div>
-                  <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Feijoada Pequena R$30,00</li>
-                    <li class="list-group-item">Feijoada Média R$45,00</li>
-                    <li class="list-group-item">Light</li>
-                  </ul>
-                </div>
-              </div>
+function saveCart(){
+  localStorage.setItem('cart', JSON.stringify(cart));
+}
 
+// novos
+function addToCart(name, price){
+  const existingItem = cart.find(item => item.name === name);
 
-            </div>
-            <div class="col-sm">
-              <div class="item-cardapio mt-3" style="display: flex;">
-                <div class="card mx-auto" style="width: 18rem;">
-                  <img src="assets/virada-paulista.jpg" class="card-img-top" alt="...">
-                  <div class="card-body">
-                    <h5 class="card-title">Virada Paulista</h5>
-                    <p class="card-text">Deliciosa feijoada acompanhada de torresmo e couve.</p>
-                  </div>
-                  <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Feijoada Pequena R$30,00</li>
-                    <li class="list-group-item">Feijoada Média R$45,00</li>
-                    <li class="list-group-item">Light</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div class="col-sm">
-              <div class="item-cardapio mt-3" style="display: flex;">
-                <div class="card mx-auto" style="width: 18rem;">
-                  <img src="assets/rabada.jpg" class="card-img-top" alt="...">
-                  <div class="card-body">
-                    <h5 class="card-title">Rabada</h5>
-                    <p class="card-text">Deliciosa feijoada acompanhada de torresmo e couve.</p>
-                  </div>
-                  <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Feijoada Pequena R$30,00</li>
-                    <li class="list-group-item">Feijoada Média R$45,00</li>
-                    <li class="list-group-item">Light</li>
-                  </ul>
-                </div>
-              </div>
+  if(existingItem){
+    existingItem.quantity++;
+  } else {
+    cart.push({
+      name,
+      price,
+      quantity: 1
+    });
+  }
 
-            </div>
+  saveCart();
+  renderCart();
+}
 
-            <!-- <div class="col-sm"></div>  nova coluna -->
-          </div>
-          <div class="row mx-auto">
-            <div class="col-sm">
+function removeItem(index){
+  cart.splice(index,1);
+  saveCart();
+  renderCart();
+}
 
-              <div class="item-cardapio mt-3" style="display: flex;">
-                <div class="card mx-auto" style="width: 18rem;">
-                  <img src="assets/feijoada.jpg" class="card-img-top" alt="...">
-                  <div class="card-body">
-                    <h5 class="card-title">Frango assado c/ macarrão</h5>
-                    <p class="card-text">Deliciosa feijoada acompanhada de torresmo e couve.</p>
-                  </div>
-                  <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Feijoada Pequena R$30,00</li>
-                    <li class="list-group-item">Feijoada Média R$45,00</li>
-                    <li class="list-group-item">Light</li>
-                  </ul>
-                </div>
-              </div>
+function increaseQty(index){
+  cart[index].quantity++;
+  saveCart();
+  renderCart();
+}
 
+function decreaseQty(index){
+  cart[index].quantity--;
 
-            </div>
-            <div class="col-sm">
+  if(cart[index].quantity <= 0){
+    cart.splice(index,1);
+  }
 
+  saveCart();
+  renderCart();
+}
+// acabou
 
-              <div class="item-cardapio mt-3" style="display: flex;">
-                <div class="card mx-auto" style="width: 18rem;">
-                  <img src="assets/virada-paulista.jpg" class="card-img-top" alt="...">
-                  <div class="card-body">
-                    <h5 class="card-title">Filé (Peixe ao molho)</h5>
-                    <p class="card-text">Deliciosa feijoada acompanhada de torresmo e couve.</p>
-                  </div>
-                  <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Feijoada Pequena R$30,00</li>
-                    <li class="list-group-item">Feijoada Média R$45,00</li>
-                    <li class="list-group-item">Light</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div class="col-sm">
-              <div class="item-cardapio mt-3 mb-3" style="display: flex;">
-                <div class="card mx-auto" style="width: 18rem;">
-                  <img src="assets/rabada.jpg" class="card-img-top" alt="...">
-                  <div class="card-body">
-                    <h5 class="card-title">Virada Paulista</h5>
-                    <p class="card-text">Deliciosa feijoada acompanhada de torresmo e couve.</p>
-                  </div>
-                  <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Feijoada Pequena R$30,00</li>
-                    <li class="list-group-item">Feijoada Média R$45,00</li>
-                    <li class="list-group-item">Light</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <footer class="bottom">
-        <div class="card-footer bg-cardapio">
-          <div class="row">
-            <div class="col-sm">
-                <h1 class="ml-5 text-center">Inicio</h4>
-                <p class="ml-5 text-white text-center">Pesquisa de Satisfação</p>
-                <p class="ml-5 text-white text-center">Cardápio</p>
-                <!-- <p class="ml-5">em breve</p> -->
-            </div>
-            <div class="col-sm">
-                <h1 class="ml-5 text-center">Sobre</h4>
-                <p class="ml-5 text-white text-center">Informações da Empresa</p>
-                <p class="ml-5 text-white text-center">Localização</p>
-            </div>
-            <div class="col-sm">
-            <h1 class="ml-5 text-center">Contato</h4>
-                <p class="ml-5 text-white text-center">Whatsapp</p>
-                <p class="ml-5 text-white text-center">Facebook</p>
-                <!-- <p class="ml-5">Instagram (em breve)</p> -->
-            </div>
-          </div>
-        </div>
-      </footer>
-    </div>
-  </div>
-  <!-- JavaScript (Opcional) -->
-  <!-- jQuery primeiro, depois Popper.js, depois Bootstrap JS -->
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-    crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
-    integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-    crossorigin="anonymous"></script>
+function renderCart(){
+const list = document.getElementById('cartList');
+const empty = document.getElementById('cartEmpty');
+const totalBox = document.getElementById('cartTotal');
+const totalValue = document.getElementById('totalValue');
+
+list.innerHTML = '';
+
+if(cart.length === 0){
+empty.style.display = 'block';
+totalBox.style.display = 'none';
+return;
+}
+
+empty.style.display = 'none';
+totalBox.style.display = 'block';
+
+let total = 0;
+
+cart.forEach((item,index)=>{
+const template = document.getElementById('cartItemTemplate');
+const node = template.content.cloneNode(true);
+
+total += item.price * item.quantity;
+
+node.querySelector('.cart-name').textContent =
+  `${item.name} - R$ ${(item.price * item.quantity).toFixed(2)}`;
+
+node.querySelector('.cart-qty').textContent = item.quantity;
+
+node.querySelector('.btn-plus')
+  .addEventListener('click', () => increaseQty(index));
+
+node.querySelector('.btn-minus')
+  .addEventListener('click', () => decreaseQty(index));
+
+node.querySelector('.btn-remove')
+  .addEventListener('click', () => removeItem(index));
+
+list.appendChild(node);
+});
+
+console.log(total);
+totalValue.textContent = total.toFixed(2);
+}
+
+</script>
+
 </body>
-
 </html>

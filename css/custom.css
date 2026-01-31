@@ -30,3 +30,46 @@
     display: flex;
     padding-top: 5%;
 }
+
+
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Faz o conteúdo ocupar o espaço restante */
+.main-content {
+  flex: 1;
+}
+
+/* Fundo geral */
+.bg-fundo-cardapio {
+  background: linear-gradient(180deg, #8b0020, #2b000a);
+  padding-bottom: 40px;
+}
+
+/* Área branca central */
+.bg-cardapio {
+  background-color: transparent;
+}
+
+/* Navbar */
+.bg-navbar {
+  background: linear-gradient(90deg, #1a0006, #8b0020);
+}
+
+/* Footer */
+.footer-cardapio {
+  width: 100%;
+}
+
+/* Cards */
+.card {
+  border-radius: 6px;
+}
