@@ -1,6 +1,5 @@
 ### TODO
-
-- [ ] Fazer uma página de Inicio impactante
+- [ ] Gerar código pix baseado no outro projeto que tenho
 
 - [ ] Adicionar os itens do tópico "pratos"
 

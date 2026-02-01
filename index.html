@@ -77,6 +77,24 @@
     <a href="feedback.html" class="btn btn-outline-secondary">
         Avaliar Atendimento
     </a>
+    <a>
+        <div class="info-box">
+            <div id="openStatus">Carregando status...</div>
+
+            <div class="hours">
+                ⏰ Seg a Sáb: 06:00 às 20:00<br>
+                🚫 Domingo: fechado
+            </div>
+        </div>
+    </a>
+    <a
+            href="https://www.google.com/maps/place/Lanchonete+e+Restaurante+KRG/@-23.5773531,-46.5520237,17z/data=!3m1!4b1!4m6!3m5!1s0x94ce5d25c11e9619:0x8c5f80dc5eed6f74!8m2!3d-23.5773531!4d-46.5494488!16s%2Fg%2F11gmfytspf?entry=ttu&g_ep=EgoyMDI2MDEyOC4wIKXMDSoASAFQAw%3D%3D"
+            target="_blank"
+            class="btn btn-outline-light"
+            style="margin-top:15px;"
+    >
+        📍 Ver localização
+    </a>
 </section>
 
 <!-- FOOTER -->
@@ -85,4 +103,38 @@
 </div>
 
 </body>
+<script>
+function checkOpenStatus(){
+  const now = new Date();
+  const day = now.getDay();   // 0 = domingo
+  const hour = now.getHours();
+
+  let isOpen = false;
+
+  // Segunda (1) a Sábado (6)
+  if(day >= 1 && day <= 6){
+    if(hour >= 6 && hour < 20){
+      isOpen = true;
+    }
+  }
+
+  // Domingo (0) fica automaticamente fechado
+
+  const status = document.getElementById('openStatus');
+
+  if(isOpen){
+    status.textContent = '🟢 Aberto agora';
+    status.style.color = '#28a745';
+  } else if(day === 0){
+    status.textContent = '🔴 Fechado • Domingo não abrimos';
+   } else {
+    status.textContent = '🔴 Fechado • Abrimos às 06:00';
+    status.style.color = '#dc3545';
+  }
+
+
+}
+
+checkOpenStatus();
+</script>
 </html>
